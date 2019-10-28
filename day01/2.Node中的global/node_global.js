@@ -15,11 +15,11 @@
 
 //3.global的一些常用属性
 /*
-clearImmediate:清空？？？？
+clearImmediate:清空立即执行函数
 clearInterval:清除循环定时器
 clearTimeout: 清除延迟定时器
 
-setImmediate:设置？？？
+setImmediate:设置立即执行函数
 setInterval:设置循环定时器
 setTimeout: 设置延迟定时器
 */
