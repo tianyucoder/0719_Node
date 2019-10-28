@@ -9,7 +9,6 @@ setInterval:设置循环定时器
 setTimeout: 设置延迟定时器
 */
 
-
 /*
   第一个阶段：timers(定时器阶段--setTimeout,setInterval)
            1.开始计时
