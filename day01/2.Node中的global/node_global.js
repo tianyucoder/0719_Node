@@ -13,7 +13,7 @@
 *   4.没有了window，但是取而代之的是一个叫做global的全局变量。
 * */
 
-//3.global的一些常用属性，以及Node的事件循环模型
+//3.global的一些常用属性
 /*
 clearImmediate:清空？？？？
 clearInterval:清除循环定时器
@@ -24,15 +24,6 @@ setInterval:设置循环定时器
 setTimeout: 设置延迟定时器
 */
 
-/*
-*
-  第一个阶段：timers
-  第二个阶段：pending callbacks
-  第三个阶段：idle, prepare
-  第四个阶段：poll
-  第五个阶段：check
-  第六个阶段：close callbacks
-*/
 
 //在Node中禁止函数的this指向global，而是指向了一个空对象
 console.log(this)
