@@ -9,14 +9,14 @@
 *           --mode :
 *           --autoClose : 自动关闭 --- 文件，默认值：true
 *           --emitClose : 关闭 --- 文件，默认值：false
-*           --start : 读取文件的起始位
+*           --start : 写入文件的起始位置(偏移量)
 * */
 
 
 let fs = require('fs')
 
 //创建一个可写流----水管到位了
-let ws = fs.createWriteStream(__dirname+'/demo.txt')
+let ws = fs.createWriteStream(__dirname+'/demo.txt',{start:10})
 
 //只要用到了流，就必须监测流的状态
 ws.on('open',function () {
