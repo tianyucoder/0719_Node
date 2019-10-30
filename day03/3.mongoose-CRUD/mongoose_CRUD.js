@@ -25,6 +25,8 @@ mongoose.connection.on('open',function (err) {
     let studentsRule = new Schema({
       stu_id:{
         type:String, //限制学号必须为：字符串
+        required:true,
+        unique:true
       },
       name:{
         type:String, //限制姓名必须为：字符串
@@ -55,18 +57,18 @@ mongoose.connection.on('open',function (err) {
 
     //4.真正有人要进入你家了 -------- CRUD
 
-    //新增操作---C
-    stuModel.create({
+    //新增操作 --- C
+    /*stuModel.create({
       stu_id:'004',
       name:'强',
-      age:'a42',
+      age:'42',
       sex:'男',
       hobby:['女','打代码','打篮球'], //限制爱好只能为数组，数组中的每一项必须为字符串
       info:'一个风一样的男子', //接收所有类型
     },function(err,data){
         if (!err) console.log(data)
         else console.log(err)
-    })
+    })*/
 
     //查询 --- R
     /*find方法：
@@ -99,5 +101,7 @@ mongoose.connection.on('open',function (err) {
     })*/
   }
 })
+
+
 
 
