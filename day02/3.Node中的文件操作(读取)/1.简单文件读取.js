@@ -15,9 +15,4 @@ fs.readFile(__dirname+'/test.mp4',function (err,data) {
     if(err) console.log(err)
     //为什么读取出来的东西是Buffer？ 用户存储的不一定是纯文本
     else console.log(data)
-    fs.writeFile('../haha.mp4',data,function (err) {
-      if(err) console.log(err)
-      else console.log('文件写入成功')
-    })
-
 })
