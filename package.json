@@ -1,0 +1,12 @@
+{
+  "name": "node_0719",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/Tianyu5177/0719_Node.git",
+  "author": "tianyu <tianyu5177@sina.com>",
+  "license": "MIT",
+  "dependencies": {
+    "mongoose": "^5.7.7",
+    "uniq": "^1.0.1"
+  }
+}
