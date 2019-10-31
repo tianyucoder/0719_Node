@@ -7,14 +7,13 @@ let stuModel = require('./model/studentModel')
 //引入老师模型
 let teacModel = require('./model/teacherModel')
 
-
 //判断数据的连接状态，若成功，CRUD
 //判断数据的连接状态，若失败，报告错误
 
 db(function(err){
-  if (err) console.log(err)
+  if (err) console.log(err) //如果连接数据库失败
   else{
-    //真正进行CRUD
+    //如果数据库连接成功，操作数据库
     teacModel.create({
       teac_id:'001',
       name:'光头强',
