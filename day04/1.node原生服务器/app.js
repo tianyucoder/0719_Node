@@ -23,7 +23,7 @@ let server = http.createServer(function (request,response) {
   //获取客户端携带过来的urlencoded编码形式的参数
   let params = request.url.split('?')[1] //name=zhangsan&age=18
   //console.log(params)
-  let objParams = qs.parse(params) // {name:'zhangsan',age:'18'}
+  let objParams = qs.parse(params) // {n`
   //console.log(objParams)
   let {name,age} =  objParams
 
