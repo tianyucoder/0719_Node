@@ -9,7 +9,7 @@ const PORT = 27017 //端口号
 const IP = 'localhost' //主机名(ip地址)
 
 //用于连接数据、并监测数据库连接状态的方法
-function connectMongo(callback) {
+function connectMongo(success,failed) {
   //1.连接数据库
   mongoose.connect(`mongodb://${IP}:${PORT}/${DB_NAME}`,{
     useNewUrlParser: true, //使用一个新的URL解析器，用于解决一些安全性问题。
@@ -20,10 +20,10 @@ function connectMongo(callback) {
   mongoose.connection.on('open',function (err) {
     if(err){
       console.log('数据库连接失败',err)
-      callback('connect failed')
+      failed('connect failed')
     }else{
       console.log('数据库连接成功')
-      callback()
+      success()
     }
   })
 }

@@ -17,7 +17,6 @@ mongoose.connection.on('open',function (err) {
     //3.操作数据库
 
     //把数据库想象成你家的别墅
-
     //1.请来一个帮你看门的保安 ------ 引入模式对象
     let Schema = mongoose.Schema
 
@@ -58,8 +57,8 @@ mongoose.connection.on('open',function (err) {
     //4.真正有人要进入你家了 -------- CRUD
 
     //新增操作 --- C
-    /*stuModel.create({
-      stu_id:'004',
+    stuModel.create({
+      stu_id:'888',
       name:'强',
       age:'42',
       sex:'男',
@@ -68,7 +67,7 @@ mongoose.connection.on('open',function (err) {
     },function(err,data){
         if (!err) console.log(data)
         else console.log(err)
-    })*/
+    })
 
     //查询 --- R
     /*find方法：
