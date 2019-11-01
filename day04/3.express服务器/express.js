@@ -10,7 +10,6 @@ const app = express()
   (2).路由可以理解为：一组组key-value的组合，key:请求方式 + URI路径 ， value:回调函数
   (3).根据路由定义的顺序(写代码的顺序),依次定义好路由，随后放入一个类似数组的结构，当有请求时，依次取出匹配。若匹配成功，不再继续匹配了
 */
-
 //根路由
 app.get('/',function (request,response) {
   /*
