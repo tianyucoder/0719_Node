@@ -29,7 +29,6 @@ let server = http.createServer(function (request,response) {
 
   response.setHeader('content-type','text/html;charset=utf-8')
   response.end(`<h1>你好${name},你的年龄是${age}</h1>`)
-
 })
 
 //3.指定服务器运行的端口号(绑定端口监听)
