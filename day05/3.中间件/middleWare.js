@@ -64,6 +64,8 @@ function guardPic(request,response,next) {
   }
 }
 
+setTimeout(guardPic,1000)
+
 app.get('/',(request,response)=>{
     console.log(request.demo)
     response.send('ok')
@@ -76,7 +78,6 @@ app.get('/demo',(request,response)=>{
 })
 
 app.get('/picture',guardPic,(request,response)=>{
-  console.log(request.demo)
   response.sendFile(__dirname+'/public/demo.jpg')
 })
 
