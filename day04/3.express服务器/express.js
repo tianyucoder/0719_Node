@@ -10,7 +10,8 @@ app.disable('x-powered-by')
 /*
   (1).在Node.js课程中，我们所有说的“路由”,默认都是指【后端路由】
   (2).路由可以理解为：一组一组key-value的组合，key:请求方式 + URI路径 ， value:回调函数
-  (3).根据路由定义的顺序(写代码的顺序),依次定义好路由，随后放入一个类似数组的结构，当有请求时，依次取出匹配。若匹配成功，不再继续匹配了
+  (3).根据路由定义的顺序(写代码的顺序),依次定义好路由，随后放入一个类似数组的结构，当有请求时，依次取出匹配。若匹配成功，不再继续匹配了。
+  (4).该URL:http://locahost:3000/meishi 中meishi，叫什么？ 1.URI名字 2.虚拟路径名字
 */
 //根路由
 app.get('/',function (request,response) {
@@ -31,8 +32,7 @@ app.get('/meishi',function (request,response) {
   *       1.请求方式必须为GET
   *       2.请求的URI必须为:“/meishi”
   * */
-  console.log(a)
-  response.send('我是美食页面1')
+  response.send('<h1>我是美食页面</h1>')
 })
 
 //二级路由

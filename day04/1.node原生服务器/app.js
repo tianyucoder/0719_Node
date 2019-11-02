@@ -8,7 +8,7 @@ let http = require('http')
 /*
 备注：
   1.key=value&key=value.....的编码形式：urlencoded编码形式。
-  2.请求地址里携带urlencoded编码形式的参数，叫做：查询字符串参数。
+  2.请求地址里携带urlencoded编码形式的参数，叫做：查询字符串参数(query参数)。
 * */
 //引入的qs是一个对象，该对象身上有着很多有用的方法，最具代表性的：parse()
 let qs = require('querystring')
@@ -23,7 +23,7 @@ let server = http.createServer(function (request,response) {
   //获取客户端携带过来的urlencoded编码形式的参数
   let params = request.url.split('?')[1] //name=zhangsan&age=18
   //console.log(params)
-  let objParams = qs.parse(params) // {n`
+  let objParams = qs.parse(params) //
   //console.log(objParams)
   let {name,age} =  objParams
 
