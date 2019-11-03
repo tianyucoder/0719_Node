@@ -13,7 +13,7 @@ const db = require('./db/db')
 //使用内置中间件用于解析post请求的urlencoded参数
 app.use(express.urlencoded({extended:true}))
 
-//如果数据库连接成功，随后立即启动服务器，在整个过程中，无论多少次请求，数据库只连接一次。
+//逻辑：如果数据库连接成功，随后立即启动服务器，在整个过程中，无论多少次请求，数据库只连接一次。
 db(()=>{
   //用于展示登录界面的路由，无其他任何逻辑 ----- UI路由
   app.get('/login',(req,res)=>{
