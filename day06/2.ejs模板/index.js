@@ -6,8 +6,6 @@ app.set('view engine','ejs')
 //让你的服务器知道你的模板在哪个目录下，配置模板目录
 app.set('views','./haha')
 
-
-
 //如果在express中基于Node搭建的服务器，使用ejs无需引入。
 app.get('/show',function (request,response) {
   let personArr = [
@@ -15,7 +13,7 @@ app.get('/show',function (request,response) {
     {name:'suxi',age:5},
     {name:'peideluo',age:6}
   ]
-  response.sendFile(__dirname+'/public/person.html')
+  response.render('person',{persons:personArr})
 })
 
 app.listen(3000,function (err) {
