@@ -70,7 +70,7 @@ router.post('/register',(req,res)=>{
       if(!err){
         //如果写入成功了
         console.log(`邮箱为${email}的用户注册成功`)
-        res.redirect(`/login?email=${email}`)
+        res.redirect(`http://localhost:3000/login?email=${email}`)
       }else{
         //如果写入失败了
         //引入报警模块，当达到敏感阈值，触发报警。
@@ -113,8 +113,8 @@ router.post('/login',(req,res)=>{
     }
     if(data){
       //res.redirect('https://wwww.baidu.com')
-      //res.render('userCenter',{nickName:data.nick_name}) //此种方式会导致浏览器地址栏依然是login
-      res.redirect(`/user_center?nick_name=${data.nick_name}`)
+      //res.render('userCenter',{nickName:data.nick_name}) //此种方式会导致浏览器地址栏依然是login--浏览器的地址栏不变化。
+      res.redirect(`http://localhost:3000/user_center?nick_name=${data.nick_name}`) //此种方法浏览器的地址栏残留的东西太多了。
       return
     }
     errMsg.loginErr = '用户名或密码输入错误！'
