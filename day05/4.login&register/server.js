@@ -36,7 +36,7 @@ db(()=>{
     //1.获取用户的输入
     const {email,nick_name,password,re_password} = req.body
     /*
-    * 2.校验数据的合法性:
+    * 2.校验数据的合法性:(一般是前台和后台同时验证。)
     *     2.1：校验成功
     *           -去数据库中查找该邮箱是否注册过
     *               2.1.1：注册过：提示用户邮箱已被占用。
@@ -52,7 +52,6 @@ db(()=>{
     //校验密码的正则表达式
     const passwordReg = /^[a-zA-Z0-9_@#.+&]{6,20}$/
 
-    console.log(nick_name)
     //使用正则去校验
     if(!emailReg.test(email)){
       res.send('邮箱格式不合法，用户名必须4-20位，主机名必须2-10位')
@@ -67,20 +66,53 @@ db(()=>{
       usersModel.findOne({email},function (err,data) {
         if(data){
           //如果注册过
+          //引入计数模块--当达到一个敏感的阈值，触发安全性机制。
+          console.log(`邮箱为${email}的用户注册失败，因为邮箱重复`)
           res.send('该邮箱已被注册，请更换邮箱')
         }else{
           //如果没有注册过
-          usersModel.create({email,nick_name,password},function (err,data) {
+          usersModel.create({email,nick_name,password},function (err) {
             if(!err){
               //如果写入成功了
+              console.log(`邮箱为${email}的用户注册成功`)
               res.send('注册成功了')
             }else{
               //如果写入失败了
+              //引入报警模块，当达到敏感阈值，触发报警。
               console.log(err)
               res.send('您当前的网络状态不稳定，稍后重试')
             }
           })
         }
+      })
+    }
+  })
+
+  //用于处理用户的登录请求，有很多业务逻辑(校验数据的有效性等) -------- 业务路由
+  app.post('/login',(req,res)=>{
+    //1.获取输入
+    const {email,password} = req.body
+    //2.准备正则
+    const emailReg = /^[a-zA-Z0-9_]{4,20}@[a-zA-Z0-9]{2,10}\.com$/
+    const passwordReg = /^[a-zA-Z0-9_@#.+&]{6,20}$/
+    if(!emailReg.test(email)){
+      res.send('邮箱格式不合法，用户名必须4-20位，主机名必须2-10位')
+    }else if(!passwordReg.test(password)){
+      res.send('密码格式不合法，必须6-20')
+    }else{
+      //3.去数据库中查找：
+      usersModel.findOne({email,password},(err,data)=>{
+          if(err){
+            //引入报警模块，当达到敏感阈值，触发报警。
+            console.log(err)
+            res.send('网络不稳定，稍后重试')
+            return
+          }
+          if(data){
+            res.redirect('https://wwww.baidu.com')
+            return
+          }
+          res.send('用户名或密码输入错误！')
       })
     }
   })
