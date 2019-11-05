@@ -112,9 +112,14 @@ router.post('/login',(req,res)=>{
       return
     }
     if(data){
-      //res.redirect('https://wwww.baidu.com')
-      //res.render('userCenter',{nickName:data.nick_name}) //此种方式会导致浏览器地址栏依然是login--浏览器的地址栏不变化。
-      res.cookie('_id',data._id.toString(),{maxAge:1000*60})
+      //1.为请求开辟一个session会话存储空间
+      //2.将客户端与服务器沟通产生的数据放入session会话存储空间
+      //3.获取session会话存储空间的id
+      //4.返回给客户端一个cookie，包含着：将上一步的id。
+      //备注：如果使用了一些第三方库，以上四步，一行代码就可以完成。
+
+      //res.cookie('_id',data._id.toString(),{maxAge:1000*60})
+      req.session._id = data._id.toString()
       res.redirect(`http://localhost:3000/user_center`) //此种方法浏览器的地址栏残留的东西太多了。
       return
     }

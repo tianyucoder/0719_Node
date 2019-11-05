@@ -25,7 +25,11 @@ router.get('/register',(req,res)=>{
 
 //用于展示个人中心界面的路由，无其他任何逻辑 ----- UI路由
 router.get('/user_center',(req,res)=>{
-  const {_id} = req.cookies
+  //1.获取客户端通过cookie携带过来的session编号
+  //2.根据session编号匹配session容器
+  //3.若匹配上：拿到session容器里的数据，去使用
+  //4.若未匹配上：驳回，去登录
+  const {_id} = req.session // req携带过来的是cookie：{key:peiqi,value:经过加密的session编号}
   if(_id){
     //去数据库中查找是否有此id
     //查到了--获取该id对应的昵称
