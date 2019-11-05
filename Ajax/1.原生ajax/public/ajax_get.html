@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>原生js_ajax_GET</title>
+</head>
+<body>
+<h1>该页面是测试使用原生js发送ajax的GET请求</h1>
+<button id="btn">点我使用原生js发送ajax的get请求</button>
+<div id="demo"></div>
+
+<script type="text/javascript">
+ 
+  let btn = document.getElementById('btn')
+  btn.onclick = function () {
+    //使用原生js发送ajax_get
+    /*
+    * 1.实例化一个XMLHttpRequest对象---------找来一个帮你发请求的人。
+    * 2.绑定一个名为onreadystatechange事件监听------和发请求的人约定好--成功了做什么，失败了做什么。
+    * 3.调用open方法---------用什么方法发？给谁发？带着什么过去？
+    * 4.调用send方法---------发送请求
+    * */
+
+    //1.实例化一个XMLHttpRequest对象
+    let xhr = new XMLHttpRequest()
+
+    //2.绑定一个名为onreadystatechange事件监听
+    xhr.onreadystatechange = function () {
+      //xhr对象本身有5种状态：0、1、2、3、4
+      if(xhr.readyState === 4 && xhr.status === 200){
+        console.log(xhr.response)
+        let demo = document.getElementById('demo')
+        demo.innerHTML = xhr.response
+      }
+    }
+
+    //3.调用open方法---------用什么方法发？给谁发？带着什么过去？
+    xhr.open('get','http://localhost:3000/ajax_get?name=kobe&age=18')
+
+    //4.调用send方法---------发送请求
+    xhr.send()
+  }
+  
+</script>
+
+</body>
+</html>
