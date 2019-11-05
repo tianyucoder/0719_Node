@@ -20,7 +20,8 @@ app.get('/demo1',function (req,res) {
 
 //demo2路由，负责给客户端“种”下一个持久化cookie
 app.get('/demo2',function (req,res) {
-  res.cookie('peiqi','hello',{maxAge:1000 * 60 * 60 *24 *30}) //给客户端种下一个持久化cookie
+  let obj = {school:'atguigu2',subject:'qianduan2'}
+  res.cookie('peiqi',JSON.stringify(obj),{maxAge:1000 * 60 * 60 *24 *30}) //给客户端种下一个持久化cookie
   res.send('我是demo2路由给你的反馈，我给你种下了一个【持久化cookie】，你赶紧去浏览器里看看！')
 })
 

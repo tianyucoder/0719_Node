@@ -13,7 +13,7 @@ app.get('/show',function (request,response) {
     {name:'suxi',age:5},
     {name:'peideluo',age:6}
   ]
-  response.render('person',{persons:personArr})
+  response.render('person',{persons:personArr,a:1})
 })
 
 app.listen(3000,function (err) {
