@@ -15,7 +15,7 @@
   btn.onclick = function () {
     //使用原生js发送ajax_get
     /*
-    * 1.实例化一个XMLHttpRequest对象---------找来一个帮你发请求的人。
+    * 1.实例化一个XMLHttpRequest对象,名为：xhr---------找来一个帮你发请求的人。
     * 2.绑定一个名为onreadystatechange事件监听------和发请求的人约定好--成功了做什么，失败了做什么。
     * 3.调用open方法---------用什么方法发？给谁发？带着什么过去？
     * 4.调用send方法---------发送请求
@@ -63,7 +63,7 @@
     }
 
     //3.调用open方法---------用什么方法发？给谁发？带着什么过去？
-    xhr.open('get','http://localhost:3000/ajax_get?name=kobe&age=18')
+    xhr.open('get','http://localhost:3000/ajax_get?name=kobe&age=18&t='+Date.now())
 
     //4.调用send方法---------发送请求
     xhr.send()

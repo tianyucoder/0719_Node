@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>原生js_ajax_GET</title>
+</head>
+<body>
+<h1>该页面是测试取消上一次请求</h1>
+<button id="btn">点我获取验证码</button>
+
+<script type="text/javascript">
+ 
+  let btn = document.getElementById('btn')
+  btn.onclick = function () {
+    let xhr = new XMLHttpRequest()
+    xhr.onreadystatechange = function () {
+      if(xhr.readyState === 4 && xhr.status === 200){
+        //如果进入此判断，意味着：请求成功了，且数据已经回来了
+        console.log(xhr.response)
+      }
+    }
+    xhr.open('get','http://localhost:3000/get_code')
+    xhr.send()
+  }
+  
+</script>
+
+</body>
+</html>
