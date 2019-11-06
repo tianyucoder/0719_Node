@@ -12,8 +12,9 @@ app.get('/get_code',function (req,res) {
   console.log('有人找我要验证码了')
   setTimeout(()=>{
     let authCode = Math.floor(Math.random()*8999 + 1000)
+    console.log(authCode)
     res.send(authCode.toString())
-  },3000)
+  },4000)
 })
 
 

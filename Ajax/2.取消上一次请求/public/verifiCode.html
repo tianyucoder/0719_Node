@@ -11,7 +11,17 @@
 <script type="text/javascript">
  
   let btn = document.getElementById('btn')
+  let lastXhr
+  
   btn.onclick = function () {
+    if(lastXhr){
+      lastXhr.abort()
+    }
+    lastXhr = getAuthCode()
+  }
+  
+  //专门用于请求验证码的函数
+  function getAuthCode() {
     let xhr = new XMLHttpRequest()
     xhr.onreadystatechange = function () {
       if(xhr.readyState === 4 && xhr.status === 200){
@@ -21,6 +31,14 @@
     }
     xhr.open('get','http://localhost:3000/get_code')
     xhr.send()
+    //xhr.abort() //用于“取消”本次请求
+    /*
+    * 关于xhr.abort
+    *     1.如果来得及，半路取消，请求根本没有到达服务器。
+    *     2.如果来不及，拒之门外，请求已经到达了服务器，且服务器已经给出响应。
+    *     3.也存在根本不起作用的情况。
+    * */
+    return xhr
   }
   
 </script>
