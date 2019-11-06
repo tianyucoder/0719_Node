@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<button id="btn">点我</button>
+<script type="text/javascript">
+  
+
+  let btn = document.getElementById('btn')
+  btn.onclick = function () {
+    //1.提前定义好一个等待被调用的函数
+    window.demo = function(result) {
+      console.log(result)
+    }
+    //2.创建一个script节点
+    const scriptNode = document.createElement('script')
+    //3.为节点指定src地址
+    scriptNode.src = 'http://localhost:3000/test'
+    //4.将节点插入页面
+    document.body.appendChild(scriptNode)
+  }
+  
+</script>
+
+</body>
+</html>
