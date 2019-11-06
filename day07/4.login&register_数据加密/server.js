@@ -30,7 +30,7 @@ app.use(session({
   name: 'peiqi',   //返回给客户端cookie的key。
   secret: 'atguigu', //参与加密的字符串（又称签名）
   saveUninitialized: false, //是否在存储内容之前创建session会话
-  resave: true ,//是否在每次请求时，强制重新保存session，即使他们没有变化（比较保险）
+  resave: false ,//是否在每次请求时，强制重新保存session，即使他们没有变化（比较保险）
   store: new MongoStore({
     url: 'mongodb://localhost:27017/sessions_container',
     touchAfter: 24 * 3600 //修改频率（例：//在24小时之内只更新一次）
